@@ -1,17 +1,14 @@
 {
     "header": {
-        "slogan": "让旅行更幸福",
-        "add_new_language": "添加新语言",
-        "title": "React 旅游网",
+
+        "title": "React Pioneer Tools",
         "register":"注册",
-        "signin":"登陆",
+        "login":"登陆",
         "home_page": "旅游首页",
         "weekend": "周末游",
         "group": "跟团游",
         "backpack": "自由行",
         "private": "私家团",
-        "cruise": "邮轮",
-        "hotel": "酒店+景点",
         "local": "当地玩乐",
         "theme": "主题游",
         "custom": "定制游",
@@ -23,7 +20,7 @@
         "insurance":"保险"
     },
     "footer": {
-        "detail" : "版权所有 @ Pioneer Tools"
+        "detail" : "版权所有 ©2020-2021 @ Pioneer Tools"
     },
     "home_page": {
         "hot_recommended": "爆款推荐",

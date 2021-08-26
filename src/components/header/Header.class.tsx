@@ -4,13 +4,21 @@ import logo from "../../assets/logo.svg";
 import { Layout, Typography, Input, Menu, Button, Dropdown } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import store from "../../redux/store";
-import {LanguageState} from "../../redux/languageReducer"
-
+import store, { RootState } from "../../redux/store";
+import {LanguageState} from "../../redux/language/languageReducer"
+import { withTranslation, WithTranslation } from "react-i18next"
+import { changeLanguageActionCreator} from "../../redux/language/languageActions"
+import { connect } from "react-redux"
 interface State extends LanguageState {}
 
+const mapStateToProps = (state : RootState) => {
+  return {
+    language: state.language,
+    languageList: state.languageList
+  }
+}
 
-class HeaderComponent extends React.Component<RouteComponentProps, State>{
+class HeaderComponent extends React.Component<RouteComponentProps & WithTranslation, State>{
 
   constructor(props) {
     super(props);
@@ -32,24 +40,13 @@ class HeaderComponent extends React.Component<RouteComponentProps, State>{
   menuClickHandler = (e) => {
       console.log(e);
 
-      // if (e.key === "new") {
-      //   const action = {
-      //     type: "add_language",
-      //     payload: { code : "new_lang", name: "new_lang"}
-      //   }
-      //   store.dispatch(action);
-      // }
-      const action =  {
-        type: "change_language",
-        payload: e.key,
-      };
-
+      const action =  changeLanguageActionCreator(e.key)
       store.dispatch(action);
 
   };
 
   render() {
-    const { history } = this.props;
+    const { history, t} = this.props;
       return (
         <div className={styles['app-header']}>
           {/* top-header */}
@@ -67,11 +64,11 @@ class HeaderComponent extends React.Component<RouteComponentProps, State>{
                 }
                 icon={<GlobalOutlined></GlobalOutlined>}
               >
-                {this.state.language === "ZH" ? "中文" : "English"}
+                {this.state.language === "zh" ? "中文" : "English"}
               </Dropdown.Button>
               <Button.Group className={styles['button-group']}>
-                <Button onClick = {() => history.push("register")}>Register</Button>
-                <Button onClick = {() => history.push("signIn")}>Login</Button>
+                <Button onClick = {() => history.push("register")}>{t("header.register")}</Button>
+                <Button onClick = {() => history.push("login")}>{t("header.login")}</Button>
               </Button.Group>
             </div>
 
@@ -98,4 +95,4 @@ class HeaderComponent extends React.Component<RouteComponentProps, State>{
 
 }
 
-export const Header = withRouter(HeaderComponent)
+export const Header = connect(mapStateToProps)(withTranslation()(withRouter(HeaderComponent)));

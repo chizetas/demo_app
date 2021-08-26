@@ -1,9 +1,8 @@
 {
     "header": {
-        "add_new_language": "add new language",
-        "title": "React Travel",
+        "title": "React Pioneer Tools",
         "register":"Register",
-        "signin":"Sign In",
+        "login":"Login",
         "home_page": "Home",
         "weekend": "Weekend",
         "group": "Group",
@@ -22,7 +21,7 @@
         "insurance":"Insurance"
     },
     "footer": {
-        "detail" : "All rights reserved @ Pioneer Tools"
+        "detail" : "Copyright ©2020-2021 All rights reserved @ Pioneer Tools"
     },
     "home_page": {
         "hot_recommended": "Hot Recommended",
