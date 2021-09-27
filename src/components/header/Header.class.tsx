@@ -4,44 +4,64 @@ import logo from "../../assets/logo.svg";
 import { Layout, Typography, Input, Menu, Button, Dropdown } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import store, { RootState } from "../../redux/store";
+import { RootState } from "../../redux/store";
 import {LanguageState} from "../../redux/language/languageReducer"
 import { withTranslation, WithTranslation } from "react-i18next"
 import { changeLanguageActionCreator} from "../../redux/language/languageActions"
 import { connect } from "react-redux"
-interface State extends LanguageState {}
+import { Dispatch } from "redux";
+
+// interface State extends LanguageState {}
 
 const mapStateToProps = (state : RootState) => {
   return {
-    language: state.language,
-    languageList: state.languageList
+    language: state.language.language,
+    languageList: state.language.languageList
   }
 }
 
-class HeaderComponent extends React.Component<RouteComponentProps & WithTranslation, State>{
-
-  constructor(props) {
-    super(props);
-    const storeState = store.getState();
-    this.state = {
-      language: storeState.language,
-      languageList: storeState.languageList,
-    };
-    store.subscribe(this.handleStoreChange);
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    changeLanguage: (code: "zh" | "en") => {
+      const action = changeLanguageActionCreator(code);
+      dispatch(action);
+    },
   }
+};
 
-  handleStoreChange = () => {
-    const storeState = store.getState();
-    this.setState({
-      language: storeState.language,
-    });
-  }
+type PropsType = RouteComponentProps & // react-route
+  WithTranslation & // i18n
+  ReturnType<typeof mapStateToProps> & // redux store
+  ReturnType<typeof mapDispatchToProps>;
+
+class HeaderComponent extends React.Component<PropsType>{
+
+  // ** replaced with react- redux
+  //
+  // constructor(props) {
+  //   super(props);
+  //   const storeState = store.getState();
+  //   this.state = {
+  //     language: storeState.language,
+  //     languageList: storeState.languageList,
+  //   };
+  //   store.subscribe(this.handleStoreChange);
+  // }
+
+  // handleStoreChange = () => {
+  //   const storeState = store.getState();
+  //   this.setState({
+  //     language: storeState.language,
+  //   });
+  // }
 
   menuClickHandler = (e) => {
       console.log(e);
 
-      const action =  changeLanguageActionCreator(e.key)
-      store.dispatch(action);
+      // const action =  changeLanguageActionCreator(e.key)
+      // store.dispatch(action);
+
+      this.props.changeLanguage(e.key)
 
   };
 
@@ -57,18 +77,19 @@ class HeaderComponent extends React.Component<RouteComponentProps & WithTranslat
                 style={{ marginLeft: 15 }}
                 overlay={
                   <Menu onClick={this.menuClickHandler}>
-                      {this.state.languageList.map(l => {
+                      {this.props.languageList.map(l => {
                         return <Menu.Item key = {l.code}>{l.name}</Menu.Item>;
                       })}
                   </Menu>
                 }
                 icon={<GlobalOutlined></GlobalOutlined>}
               >
-                {this.state.language === "zh" ? "中文" : "English"}
+                {this.props.language === "zh" ? "中文" : "English"}
               </Dropdown.Button>
               <Button.Group className={styles['button-group']}>
-                <Button onClick = {() => history.push("register")}>{t("header.register")}</Button>
-                <Button onClick = {() => history.push("login")}>{t("header.login")}</Button>
+                <Button onClick = {() => history.push("/profile")}>{t("header.profile")}</Button>
+                <Button onClick = {() => history.push("/register")}>{t("header.register")}</Button>
+                <Button onClick = {() => history.push("/login")}>{t("header.login")}</Button>
               </Button.Group>
             </div>
 
@@ -95,4 +116,4 @@ class HeaderComponent extends React.Component<RouteComponentProps & WithTranslat
 
 }
 
-export const Header = connect(mapStateToProps)(withTranslation()(withRouter(HeaderComponent)));
+export const Header = connect(mapStateToProps, mapDispatchToProps)(withTranslation()(withRouter(HeaderComponent)));

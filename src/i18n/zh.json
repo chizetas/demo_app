@@ -4,29 +4,22 @@
         "title": "React Pioneer Tools",
         "register":"注册",
         "login":"登陆",
-        "home_page": "旅游首页",
-        "weekend": "周末游",
-        "group": "跟团游",
-        "backpack": "自由行",
-        "private": "私家团",
-        "local": "当地玩乐",
-        "theme": "主题游",
-        "custom": "定制游",
-        "study": "游学",
-        "visa":"签证",
-        "enterprise":"企业游",
-        "high_end":"高端游",
-        "outdoor":"爱玩户外",
-        "insurance":"保险"
+        "home_page": "首页",
+        "about_page": "关于",
+        "shopping_cart" : "购物车",
+        "logout": "登出",
+        "welcome" : "欢迎回来👏",
+        "profile" : "个人中心👤"
     },
     "footer": {
         "detail" : "版权所有 ©2020-2021 @ Pioneer Tools"
     },
     "home_page": {
-        "hot_recommended": "爆款推荐",
-        "new_arrival": "新品上市",
-        "domestic_travel": "国内游推荐",
-        "joint_venture": "合作企业",
-        "start_from": "(起)"
+
+    },
+    "profile": {
+        "edit": "修改",
+        "remove": "删除",
+        "default": "设为默认值"
     }
 }

@@ -24,7 +24,4 @@ export default (state = defaultState, action : LanguageActionTypes) => {
         default:
             return state
     }
-
-    
-    return state;
 };

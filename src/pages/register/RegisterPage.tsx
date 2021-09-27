@@ -1,13 +1,10 @@
 import React from "react";
+import { UserLayout } from "../../layout/userLayout"
+import { RegisterForm } from "./RegisterForm";
 
 
-import styles from './SignInPage.module.css'
-export class RegisterPage extends React.Component {
-    render() {
-        return (
-            <h1>Register Page</h1>
-
-   
-        );
-    }
-}
+export const RegisterPage: React.FC = () => {
+    return (<UserLayout>
+        <RegisterForm/>
+    </UserLayout>);
+};

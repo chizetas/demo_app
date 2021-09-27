@@ -4,30 +4,21 @@
         "register":"Register",
         "login":"Login",
         "home_page": "Home",
-        "weekend": "Weekend",
-        "group": "Group",
-        "backpack": "Backpack",
-        "private": "Private",
-        "cruise": "Cruise",
-        "hotel": "Hotel & Attractions",
-        "local": "Local",
-        "theme": "Theme",
-        "custom": "Custom",
-        "study": "Study",
-        "visa":"Visa",
-        "enterprise":"Enterprise",
-        "high_end":"High-end",
-        "outdoor":"Outdoor",
-        "insurance":"Insurance"
+        "about_page": "About",
+        "shopping_cart" : "ShoppingCart",
+        "logout": "Log Out",
+        "welcome" : "welcome👏",
+        "profile" : "Profile"
     },
     "footer": {
         "detail" : "Copyright ©2020-2021 All rights reserved @ Pioneer Tools"
     },
     "home_page": {
-        "hot_recommended": "Hot Recommended",
-        "new_arrival": "New arrival",
-        "domestic_travel": "Domestic travel",
-        "joint_venture": "Joint Venture",
-        "start_from": "(start from)"
+
+    },
+    "profile": {
+        "edit": "Edit",
+        "remove": "Remove",
+        "default": "Set as Default"
     }
 }

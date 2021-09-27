@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.6.3",
+    "@ant-design/pro-card": "^1.14.21",
+    "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -13,7 +15,9 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.8",
     "antd": "^4.16.12",
+    "axios": "^0.21.1",
     "i18next": "^20.4.0",
+    "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.11.4",
@@ -28,12 +32,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "prettier"
     ]
   },
   "browserslist": {
@@ -50,6 +56,13 @@
   },
   "devDependencies": {
     "@types/react-redux": "^7.1.18",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "prettier": "2.3.2",
     "typescript-plugin-css-modules": "^3.4.0"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }

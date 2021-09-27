@@ -1,0 +1,15 @@
+.payment-card-container {
+  margin-top: 20px;
+  margin-left: 50px;
+}
+
+.card-container {
+  padding: 10px;
+  height: 150px;
+  position: relative;
+}
+
+.card-bottom-link {
+  top: 120px;
+  position: absolute;
+}
